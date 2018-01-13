@@ -1,0 +1,75 @@
+//import java.util.List;
+//import java.util.Map;
+//import java.util.Set;
+
+public class LoopExample {
+	public void run() {
+		system.debug('<<example1>>'); 
+		example1(); 
+		system.debug('<<example2>>'); 
+		example2(); 
+	}
+	
+	private void example1() {
+		//for loop 
+		system.debug('<<Classic for loop>>'); 
+		for(Integer i = 0; i< 10; i++) {
+			system.debug(i); 
+		}
+		//for loop in array, list , set and map
+		Integer[] numbers = new Integer[4]; 
+		numbers[0] = 10; 
+		numbers[1] = 20 ; 
+		numbers[2] = 30; 
+		numbers[3] = 40; 
+		system.debug('<<numbers>>'); 
+		for(Integer n: numbers) {
+			system.debug(n); 
+		}
+		List<Double> doubles = new List<Double>(); 
+		doubles.add(10.0); 
+		doubles.add(20.0); 
+		doubles.add(30.0); 
+		doubles.add(40.0); 
+		system.debug('<<doubles>>'); 
+		for(Double d: doubles) {
+			system.debug(d); 
+		}
+		Set<Long> longs = new Set<Long>(); 
+		longs.add(10); 
+		longs.add(20); 
+		longs.add(30); 
+		longs.add(40); 
+		system.debug('<<longs>>'); 
+		for(Long l: longs) {
+			system.debug(l); 
+		}
+		Map<String,Integer> m = new Map<String,Integer>(); 
+		m.put('foo', 10); 
+		m.put('bar', 20); 
+		m.put('bim', 30); 
+		system.debug('<<m>>'); 
+		for(String k: m.keySet()) {
+			system.debug(k + ' => '+ m.get(k)); 
+		}
+	}
+	
+	//while and do ... while loop 
+	private void example2() {
+		Integer upperBound = 10; 
+		Integer init = 0; 
+		while(init < upperBound) {
+			system.debug('Step # '+ init); 
+			init++; 
+		}
+		init = 0 ; 
+		do {
+			system.debug('Step # '+ init); 
+			init++; 
+		} while(init < upperBound); 
+	}
+}
+
+
+LoopExample ex = new LoopExample(); 
+ex.run(); 

@@ -1,0 +1,24 @@
+/*
+ in Force.com Developer Console
+login: gmail and e...
+  Debug -> Open Execute Anonymous Window (Ctrl+E)
+checkbox : Open Log 
+in Log Window: checkbox : Debug Only
+*/
+public class Clazz1  {
+    public String name; 
+    public Integer age;
+    public Double wage; 
+    public void printProps() {
+       String template = 'name = {0}\nage={1}\nwage={2}'; 
+       String[] arguments = new String[]{name, String.valueOf(age), String.valueOf(wage)};
+       String msg = String.format(template, arguments); 
+       System.debug(msg); 
+    }
+}
+
+Clazz1 c1 = new Clazz1(); 
+c1.name = 'foo'; 
+c1.age = 10 ; 
+c1.wage = 100.0; 
+c1.printProps(); 

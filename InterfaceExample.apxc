@@ -1,0 +1,90 @@
+public class InterfaceExample {
+	public void run() {
+		testCustomFile(); 
+	}
+	private void testCustomFile() {
+		CustomFile cf1, cf2, cf3, cf4;
+		cf1 = new CustomFile('cf1.txt', true, false, false); 
+		cf2 = new CustomFile('cf2.txt', false, true, false); 
+		cf3 = new CustomFile('cf3.txt', false, false, true); 
+		cf4 = new CustomFile('cf4.txt', true, true, true); 
+		cf1.batch(); 
+		cf2.batch(); 
+		cf3.batch(); 
+		cf4.batch(); 
+	}
+	
+}
+
+public interface Readable {
+	boolean isReadable(); 
+	void read(); 
+}
+
+public interface Writable {
+	boolean isWritable();
+	void write(); 
+}
+
+public interface Executable {
+	boolean isExecutable();
+	void execute(); 
+}
+
+
+public class CustomFile implements Readable, Writable, Executable {
+	private boolean r, w, x;
+	private String name; 
+	public CustomFile(string name, boolean r, boolean w, boolean x) {
+		this.name = name; 
+		this.r = r; 
+		this.w = w; 
+		this.x = x; 
+	}
+	
+	public  boolean isReadable() {
+		return r; 
+	}
+	public  boolean isWritable() {
+		return w; 
+	}
+	public  boolean isExecutable() {
+		return x; 
+	}
+	
+	public  void read() {
+		if(isReadable()) {
+			system.debug(name+ ' was read.'); 
+		} else {
+			system.debug(name+ ' could not be read.'); 
+		}
+	}
+	
+	public  void write() {
+		if(isWritable()) {
+			system.debug(name+ ' was written.'); 
+		} else {
+			system.debug(name + ' could not be written.'); 
+		}
+	}
+	
+	public  void execute() {
+		if(isExecutable()) {
+			system.debug(name + ' was executed.'); 
+		} else {
+			system.debug(name + ' could not be executed.'); 
+		}
+	}
+	
+	public void batch() {
+		System.debug('<<info on '+ name+ '>>'); 
+		read(); 
+		write(); 
+		execute(); 
+	}
+	
+}
+
+
+InterfaceExample ex = new InterfaceExample(); 
+ex.run(); 

@@ -1,0 +1,141 @@
+public class MathClassesRunner {
+	public void run() {
+		system.debug('<<testSimpleMath>>'); 
+		testSimpleMath(); 
+		system.debug('<<testComplexNumber>>'); 
+		testComplexNumber(); 
+	}
+	
+	private void testSimpleMath() {
+		SimpleMath sm = new SimpleMath(10, 3); 
+		double add = sm.add(); 
+		double sub = sm.sub(); 
+		double mul = sm.mul(); 
+		double div = sm.div(); 
+		system.debug(sm); 
+		system.debug('x + y = '+ add); 
+		system.debug('x - y = '+ sub); 
+		system.debug('x * y = '+ mul); 
+		system.debug('x / y = '+ div); 
+	}
+	private void testComplexNumber() {
+		ComplexNumber cn1 , cn2; 
+		cn1 = new ComplexNumber(3, 3); 
+		cn2 = new ComplexNumber(2, 2); 
+		system.debug('cn1 = '+ cn1); 
+		system.debug('cn2 = '+ cn2); 
+		ComplexNumber cnAdd = cn1.add(cn2); 
+		ComplexNumber cnSub = cn1.sub(cn2); 
+		ComplexNumber cnMul = cn1.mul(cn2); 
+		ComplexNumber cnDiv = cn1.div(cn2); 
+		system.debug('cn1 + cn2 = '+ cnAdd); 
+		system.debug('cn1 - cn2 = '+ cnSub); 
+		system.debug('cn1 * cn2 = '+ cnMul); 
+		system.debug('cn1 / cn2 = '+ cnDiv); 
+	}
+}
+
+
+public class SimpleMath {
+	private double x, y; 
+	
+	public SimpleMath(double x, double y) {
+		this.x = x ; 
+		this.y = y; 
+	}
+	public SimpleMath()  {
+		
+	}
+	//getter and setter 
+	public void setX(double x) {
+		this.x = x; 
+	}
+	public void setY(double y) {
+		this.y = y; 
+	}
+	public double getX() {
+		return x ; 
+	}
+	public double getY() {
+		return y; 
+	}
+	
+	public double add() {
+		return x + y; 
+	}
+	public double sub() {
+		return x - y; 
+	}
+	public double mul() {
+		return x * y; 
+	}
+	public double div() {
+		return x / y ; 
+	}
+	
+	public override string toString() {
+		return String.format('SimpleMath({0},{1})', new String[]{String.valueOf(x), String.valueOf(y)}); 
+	}
+}
+
+
+public class ComplexNumber {
+	private double re, im; 
+	public ComplexNumber() {
+		
+	}
+	public ComplexNumber(double re, double im) {
+		this.re = re; 
+		this.im = im; 
+	}
+	public void setRe(double re) {
+		this.re = re; 
+	}
+	public void setIm(double im) {
+		this.im = im; 
+	}
+	public double getRe() {
+		return re; 
+	}
+	public double getIm() {
+		return im; 
+	}
+	public ComplexNumber add(ComplexNumber other) {
+		ComplexNumber res = new ComplexNumber(); 
+		res.re = re + other.re ; 
+		res.im = im + other.im; 
+		return res; 
+	}
+	public ComplexNumber sub(ComplexNumber other) {
+		ComplexNumber res = new ComplexNumber(); 
+		res.re = re - other.re; 
+		res.im = im - other.im; 
+		return res; 
+	}
+	public ComplexNumber mul(double factor) {
+		return new ComplexNumber(re*factor, im*factor); 
+	}
+	public ComplexNumber mul(ComplexNumber other) {
+		ComplexNumber res = new ComplexNumber(); 
+		res.re = re*other.re - im*other.im; 
+		res.im = re*other.im + im*other.re; 
+		return res; 
+	}
+	
+	public ComplexNumber div(double factor) {
+		return new ComplexNumber(re/factor, im/factor); 
+	}
+	public ComplexNumber div(ComplexNumber other) {
+		double factor = other.re*other.re + other.im*other.im; 
+		ComplexNumber res = this.mul(new ComplexNumber(other.re, -other.im)); 
+		return res.div(factor); 
+	}
+	
+	public override string toString() {
+		return String.format('ComplexNumber({0},{1})', new String[]{string.valueOf(re), string.valueOf(im)}); 
+	}
+}
+
+
+MathClassesRunner runner = new MathClassesRunner(); 
+runner.run(); 

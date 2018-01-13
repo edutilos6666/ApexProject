@@ -1,0 +1,139 @@
+public class ClassExample {
+	public void run() {
+		system.debug('<<testBox>>');
+		testBox(); 
+	}
+	
+	private void testBox() {
+		Box b1, b2; 
+		b1 = new Box(3, 3, 3); 
+		b2 = new Box(2, 2,2); 
+		system.debug('b1 = '+ b1); 
+		system.debug('b2 = '+ b2); 
+		Box b_add = b1.add(b2); 
+		Box b_sub = b1.sub(b2); 
+		Box b_mul = b1.mul(b2); 
+		Box b_div = b1.div(b2); 
+		Boolean eq = b1.eq(b2); 
+		Boolean ne = b1.ne(b2); 
+		Boolean gt = b1.gt(b2); 
+		Boolean gte= b1.gte(b2); 
+		Boolean lt = b1.lt(b2); 
+		Boolean lte = b1.lte(b2); 
+		system.debug('b1 + b2 = '+ b_add); 
+		system.debug('b1 - b2 = '+ b_sub); 
+		system.debug('b1 * b2 = '+ b_mul); 
+		system.debug('b1 /  b2 = '+ b_div); 
+		system.debug('b1 == b2 = '+ eq); 
+		system.debug('b1 != b2 = '+ ne); 
+		system.debug('b1 > b2 = '+ gt); 
+		system.debug('b1 >= b2 = '+ gte); 
+		system.debug('b1 < b2 = '+ lt); 
+		system.debug('b1 <= b2 = '+ lte); 
+	}
+	
+}
+
+public class Box {
+	private Double width; 
+	private Double height; 
+	private Double depth; 
+	public Box() {
+		
+	}
+	
+	public Box(Double width, Double height, Double depth) {
+		this.width = width; 
+		this.height = height; 
+		this.depth = depth; 
+	}
+	
+	public Box(Double size) {
+		this.width = size; 
+		this.height = size; 
+		this.depth = size; 
+	}
+	
+	public void setWidth(double width) {
+		this.width = width; 
+	}
+	public void setHeight(double height) {
+		this.height = height; 
+	}
+	
+	public void setDepth(double depth) {
+		this.depth = depth; 
+	}
+	public double getWidth() {
+		return this.width; 
+	}
+	public double getHeight() {
+		return this.height; 
+	}
+	public double getDepth() {
+		return this.depth; 
+	}
+	public double volume() {
+		return width*height*depth; 
+	}
+	
+	public boolean eq(Box other) {
+		return this.volume() == other.volume(); 
+	}
+	public boolean ne(Box other) {
+		return this.volume() != other.volume(); 
+	}
+	public boolean gt(Box other) {
+		return this.volume() > other.volume(); 
+	}
+	public boolean gte(Box other) {
+		return this.volume() >= other.volume(); 
+	}
+	public boolean lt(Box other) {
+		return this.volume() < other.volume(); 
+	}
+	public boolean lte(Box other) {
+		return this.volume() <= other.volume(); 
+	}
+	public override string toString() {
+		string strTemplate = 'Box({0},{1},{2})'; 
+		List<String> fillers = new String[]{String.valueOf(width), String.valueOf(height), String.valueOf(depth)}; 
+		return string.format(strTemplate, fillers); 
+	}
+	
+	public Box add(Box other) {
+		Box res = new Box(); 
+		res.setWidth(this.width+other.width);
+		res.setHeight(this.height+other.height);
+		res.setDepth(this.depth+other.depth);
+		return res; 
+	}
+	public Box sub(Box other) {
+		Box res = new Box(); 
+		res.setWidth(width-other.width); 
+		res.setHeight(height-other.height); 
+		res.setDepth(depth-other.depth); 
+		return res; 
+	}
+	public Box mul(Box other) {
+		Box res = new Box(); 
+		res.width = width*other.width; 
+		res.height = height*other.height; 
+		res.depth = depth*other.depth; 
+		return res; 
+	}
+	public Box div(Box other) {
+		Box res = new Box(); 
+		res.width = width/other.width; 
+		res.height = height/other.height; 
+		res.depth = depth/other.depth; 
+		return res; 
+	}
+}
+
+
+ClassExample ex = new ClassExample(); 
+ex.run(); 
+
+
+

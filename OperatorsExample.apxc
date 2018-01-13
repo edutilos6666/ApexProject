@@ -1,0 +1,76 @@
+//package com.edutilos.main;
+
+public class OperatorsExample {
+    public void run() {
+        system.debug('<<Arithmetic Operators>>'); 
+        test_ArithmeticOps(); 
+        system.debug('<<Relational Operators>>'); 
+        test_RelationalOps();
+        system.debug('<<Logical Operators>>'); 
+        test_LogicalOps();
+        system.debug('<<Bitwise Operators>>'); 
+        test_bitwiseOps(); 
+    }
+    
+    private void test_ArithmeticOps() {
+        Integer x = 10, y = 3; 
+        Integer add = x + y; 
+        Integer sub = x - y; 
+        Integer mul = x * y; 
+        Integer div = x / y; 
+        Integer mod = math.mod(x,y);
+        system.debug(x + ' + '+ y + ' = '+ add);
+        system.debug(x+ ' - '+ y + ' = ' + sub); 
+        system.debug(x+ '*' + y + '=' + mul); 
+        system.debug(x+'/'+y+'='+div); 
+		system.debug(x+' mod '+y + '='+mod); 
+    }
+    
+    private void test_RelationalOps() {
+    	Integer x = 10 , y = 3; 
+    	Boolean eq = x == y ; 
+    	Boolean ne = x != y; 
+    	Boolean gt = x > y ; 
+    	Boolean gte = x >= y; 
+    	Boolean lt = x < y ; 
+    	Boolean lte = x <= y; 
+    	system.debug('x == y = '+ eq);
+    	system.debug('x != y = '+ ne); 
+    	system.debug('x > y = ' + gt); 
+    	system.debug('x >= y = '+ gte); 
+    	system.debug('x < y = ' + lt); 
+    	system.debug('x <= y = '+ lte); 
+    }
+    
+    private  void test_LogicalOps() {
+    	Boolean x = true, y = false ; 
+    	Boolean op_and = x && y ; 
+    	Boolean op_or = x || y ; 
+    	Boolean not_x = !x; 
+    	Boolean not_y = !y; 
+    	system.debug('x and y = '+ op_and);
+    	system.debug('x or y = '+ op_or);
+    	system.debug('not x = '+ not_x); 
+    	system.debug('not y = '+ not_y); 
+    }
+    
+    private void test_BitwiseOps() {
+    	Integer x = 10 , y = 23; 
+    	Integer op_and = x & y ; 
+    	Integer op_or = x | y ; 
+    	Integer op_xor = x ^ y ; 
+    	Integer x_ls_2 = x << 2 ; 
+    	Integer x_rs_2 = x >> 2 ; 
+    	Integer x_rsu_2 = x >>> 2; 
+    	system.debug('x and y = '+ op_and); 
+    	system.debug('x or y = '+ op_or); 
+    	system.debug('x xor y = '+ op_xor); 
+    	system.debug('x ls 2 = '+ x_ls_2); 
+    	system.debug('x rs 2 = '+ x_rs_2);
+    	system.debug('x rsu 2 = '+ x_rsu_2); 
+    }
+}
+
+
+OperatorsExample ex = new OperatorsExample(); 
+ex.run(); 

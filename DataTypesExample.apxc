@@ -1,0 +1,151 @@
+//import java.util.List;
+//import java.util.Map;
+
+public class DataTypesExample {
+	public void run() {
+		System.debug('<<Primitive Data Types>>'); 
+		example1(); 
+		System.debug('<<Container Data Types>>'); 
+		example2(); 
+		System.debug('<<JSON Class'); 
+		example3(); 
+	}
+	
+	private void example1() {
+		Long id = 1L ; 
+		String name = 'foobar'; 
+		Integer age = 10 ; 
+		Double wage = 100.0; 
+		Boolean active = true; 
+		Date d = Date.today();
+		Time t = Time.newInstance(1, 2,3,4); 
+		DateTime dt = DateTime.now(); 
+		System.debug('id = '+ id); 
+		System.debug('name = '+ name); 
+		System.debug('age = '+ age); 
+		System.debug('wage = '+ wage); 
+		System.debug('active = '+ active); 
+		System.debug('date = '+ d); 
+		System.debug('time = '+ t); 
+		System.debug('datetime = ' + dt); 
+		Weekdays monday = Weekdays.Monday ; 
+		System.debug('monday = '+ monday); 
+	}
+	
+	//Container data types 
+	private void example2() {
+		//array 
+		Integer[] numbers = new Integer[6]; 
+		numbers[0] = 10; 
+		numbers[1] = 20 ; 
+		numbers[2] = 30; 
+		numbers[3] = 40; 
+		numbers[4] = 50; 
+		numbers[5] = 60; 
+		System.debug('<<Numbers>>'); 
+		for(Integer n: numbers) {
+			System.debug(n); 
+		}
+		//list 
+		List<String> names = new List<String>(); 
+		names.add('foo'); 
+		names.add('bar'); 
+		names.add('bim'); 
+		System.debug('<<Names>>'); 
+		for(String name: names) {
+			System.debug(name); 
+		}
+		//set 
+		Set<Double> doubles = new Set<Double>(); 
+		doubles.add(10.0); 
+		doubles.add(20.0); 
+		doubles.add(30.0); 
+		doubles.add(40.0); 
+		System.debug('<<Doubles>>'); 
+		for(Double d: doubles) {
+			System.debug(d); 
+		}
+		//Map 
+		Map<String, Integer> m = new Map<String,Integer>(); 
+		m.put('foo', 10); 
+		m.put('bar', 20); 
+		m.put('bim', 30); 
+		System.debug('<<m>>'); 
+		System.debug('keySet = '+ m.keySet()); 
+		System.debug('values = '+ m.values()); 
+		for(String k: m.keySet()) {
+			System.debug(k + ' => '+ m.get(k)); 
+		}
+	}
+	
+	//JSON class
+	private void example3() {
+		Long id = 1L; 
+		String name = 'foobar'; 
+		Integer age = 10; 
+		Double wage = 100.0; 
+		Boolean active = true; 
+		Date d = Date.today(); 
+		Time t = Time.newInstance(1, 2,3,4); 
+		DateTime dt = DateTime.now();
+		List<String> names = new List<String>(); 
+		names.add('foo'); 
+		names.add('bar'); 
+		names.add('bim'); 
+		Map<String,Integer> m = new Map<String,Integer>(); 
+		m.put('foo', 10); 
+		m.put('bar', 20); 
+		m.put('bim', 30); 
+		
+		String id_json = JSON.serialize(id); 
+		String name_json = JSON.serialize(name); 
+		String age_json = JSON.serialize(age); 
+		String wage_json = JSON.serialize(wage); 
+		String active_json = JSON.serialize(active); 
+		String d_json = JSON.serialize(d); 
+		String t_json = JSON.serialize(t); 
+		String dt_json = JSON.serialize(dt); 
+		String names_json = JSON.serialize(names); 
+		String m_json = JSON.serialize(m); 
+		System.debug('<<Serialized>>'); 
+		system.debug('id_json = '+ id_json);
+		system.debug('name_json = '+ name_json); 
+		system.debug('age_json = '+ age_json); 
+		system.debug('wage_json = '+ wage_json); 
+		system.debug('active_json = '+ active_json); 
+		system.debug('d_json = '+ d_json); 
+		system.debug('t_json = '+ t_json); 
+		system.debug('dt_json = '+ dt_json); 
+		system.debug('names_json = '+ names_json); 
+		system.debug('m_json = '+ m_json);
+		
+		System.debug('<<Deserialized>>'); 
+		Long id2 = (Long)JSON.deserialize(id_json, Long.class); 
+		String name2 = (String)JSON.deserialize(name_json, String.class); 
+		Integer age2 = (Integer)JSON.deserialize(age_json, Integer.class); 
+		Double wage2 = (Double)JSON.deserialize(wage_json, Double.class); 
+		Boolean active2 = (Boolean)JSON.deserialize(active_json, Boolean.class);
+		Date d2 = (Date)JSON.deserialize(d_json, Date.class); 
+		Time t2 = (Time)JSON.deserialize(t_json, Time.class); 
+		DateTime dt2 = (DateTime)JSON.deserialize(dt_json, DateTime.class); 
+		List<String> names2 = (List<String>)JSON.deserialize(names_json, List<String>.class);
+		Map<String,Integer> m2 = (Map<String,Integer>)JSON.deserialize(m_json, Map<String,Integer>.class); 
+		system.debug('id2 = '+ id2); 
+		system.debug('name2 = '+ name2); 
+		system.debug('age2 = '+ age2); 
+		system.debug('wage2 = '+ wage2); 
+		system.debug('active2 = '+ active2); 
+		system.debug('d2 = '+ d2);
+		system.debug('t2 = '+ t2); 
+		system.debug('dt2 = '+ dt2); 
+		system.debug('names2 = '+ names2); 
+		system.debug('m2 = '+ m2); 
+		
+	}
+}
+private enum Weekdays {Sunday, Monday, Tuesday, Wednesday , Thursday,Friday, Saturday}
+
+DataTypesExample ex = new DataTypesExample(); 
+ex.run(); 
+
+

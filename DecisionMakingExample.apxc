@@ -1,0 +1,26 @@
+public class DecisionMakingExample {
+	public void run() {
+		system.debug('<<example1>>'); 
+		example1(); 
+	}
+	
+	private void example1() {
+		Integer age = 10; 
+		String msg = ''; 
+		if (age <= 0 ) {
+			msg = 'Wrong age, age must be > 0.'; 
+		} else if (age > 0 && age < 10) {
+			msg = 'You are a kid.'; 
+		} else if (age >= 10 && age < 20) {
+			msg = 'You are a teenager.'; 
+		} else if (age >= 20 && age < 50) {
+			msg = 'You are an adult.'; 
+		} else if (age >= 50) {
+			msg = 'You are an elderly.'; 
+		}
+		system.debug(msg); 
+	}
+}
+
+DecisionMakingExample ex = new DecisionMakingExample(); 
+ex.run(); 
